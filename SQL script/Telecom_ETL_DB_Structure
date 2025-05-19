@@ -1,0 +1,48 @@
+CREATE DATABASE ETL_Telecom
+ 
+ CREATE TABLE Transactions (
+    transaction_id INT,
+    IMSI VARCHAR(9),
+    subscriber_id INT,
+    TAC VARCHAR(8),
+    SNR VARCHAR(6),
+    IMEI VARCHAR(15),
+    CELL INT,
+    LAC INT,
+    EVENT_TYPE CHAR(1),
+    EVENT_TS DATETIME,
+    SourceFileName NVARCHAR(255)
+);
+
+CREATE TABLE Rejected_Transactions (
+    transaction_id INT,
+    IMSI VARCHAR(9),
+    IMEI VARCHAR(15),
+    CELL INT,
+    LAC INT,
+    EVENT_TYPE CHAR(1),
+    EVENT_TS VARCHAR(50),
+    Reason NVARCHAR(255),
+    SourceFileName NVARCHAR(255)
+);
+
+
+CREATE TABLE IMSI_Reference (
+    IMSI VARCHAR(9) PRIMARY KEY,
+    subscriber_id INT
+);
+
+CREATE TABLE ETL_Log (
+    FileName NVARCHAR(255),
+    LoadDate DATETIME DEFAULT GETDATE(),
+    TotalRecords INT,
+    InsertedRecords INT,
+    RejectedRecords INT
+);
+
+
+CREATE TABLE [FF Errors](
+	[Flat File Source Error Output Column] [varchar](max) NULL,
+	[ErrorCode] [int] NULL,
+	[ErrorColumn] [int] NULL
+)
