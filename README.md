@@ -113,5 +113,40 @@ Each run inserts a new record into `ETL_Log` with:
 - Processing results (row counts)
 
 ---
+### 2. Data Flow
+
+#### 📷 Data Flow Screenshot
+![Data Flow](images/Data%20Flow.png)
+
+---
+### 📥 Data Sources (Sources)
+- **File Source**: Loads data from CSV or Excel files.
+- **Error Output**: Captures any errors during the file reading process.
+
+### 🔄 Data Transformations
+
+1. **Replaces Null Values**  
+   - Handles NULL or empty fields by replacing them with default values.
+
+2. **Lookups**
+   - **Subscriber_id**: Verifies if the subscriber exists in the reference table.
+   - **TAC-SNR**: Retrieves device information based on the device identifier code.
+
+3. **Conditional Split**  
+   - Separates data rows into:
+     - `ValidRows`: Clean, verified records.
+     - `RejectedRows`: Invalid records with issues like missing values or unmatched references.
+
+### 🔢 Row Count
+- **TotalRecords**: Total number of rows processed.
+- **AcceptedRecords**: Number of valid rows inserted into the database.
+- **RejectedRecords**: Number of rows rejected due to validation issues.
+
+### 🛢️ Data Destinations
+- **QUE DB Destination**: Main database table for valid data.
+- **Rejected_Transactions**: Stores rejected rows for review and debugging.
+- **Error Output**: Logs any errors that occur during the data insertion phase.
+
+---
 
 
