@@ -80,4 +80,38 @@ During data loading, the following metrics are captured:
 
 These CSV files contain fundamental data related to various customer transactions within a specific time period.  
 🔗 [ CSV file](https://github.com/ManarZeita25/ETL_Telecom/blob/main/source%20files/batch_0)
+## 📦 Package Design
+
+### 1. Control Flow
+
+
+- **Foreach Loop Container**  
+  Iterates over all CSV files in the source folder.
+
+- **Variables**
+  - `User::FileName` — stores the current file name.
+
+- **Data Flow Task**  
+  Processes the current file, loads valid records into the database, and logs audit information.
+
+- **Execute SQL Task**  
+  Updates the audit table (`ETL_Log`) with:
+  - Total rows processed (`TotalRecords`)
+  - Accepted rows (`AcceptedRecords`)
+  - Rejected rows (`RejectedRecords`)
+
+- **File System Task**  
+  Moves the processed file to an archive folder to prevent reprocessing.
+
+---
+
+## 🧾 Audit Logging
+
+Each run inserts a new record into `ETL_Log` with:
+- File name
+-  Load Date
+- Processing results (row counts)
+
+---
+
 
