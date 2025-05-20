@@ -148,5 +148,7 @@ Each run inserts a new record into `ETL_Log` with:
 - **Error Output**: Logs any errors that occur during the data insertion phase.
 
 ---
+##  Result
+![Result](images/Result.png)
 
 
