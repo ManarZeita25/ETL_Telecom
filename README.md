@@ -79,4 +79,5 @@ During data loading, the following metrics are captured:
 ## 📁 Data Source
 
 These CSV files contain fundamental data related to various customer transactions within a specific time period.  
-🔗 [Click here to view a sample CSV file]([link-to-your-csv-file](https://github.com/ManarZeita25/ETL_Telecom/tree/main/source%20files/batch_0))
+🔗 [Click here to view a sample CSV file](https://github.com/ManarZeita25/ETL_Telecom/blob/main/source%20files/batch_0)
+
