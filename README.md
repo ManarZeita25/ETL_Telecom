@@ -1,7 +1,7 @@
 # 📶 Telecom ETL Project using SSIS
 
 ## 📌 Project Overview
-This ETL project is designed for a **telecommunications company** to process real-time transactional data generated every 5 minutes. The incoming data is in **CSV format** and includes key fields such as **IMSI, IMEI, CELL**, and the **timestamp** of the event.
+This ETL project is designed for a **telecommunications company** to process real-time transactional data generated every 5 minutes. The incoming data is in **CSV format** and includes key fields such as **IMSI, IMEI, CELL**, and the **EVENT_TS** of the event.
 
 The project uses **SQL Server Integration Services (SSIS)** to extract, transform, validate, and load this data into a structured **SQL Server** database for further analysis and reporting.
 
@@ -83,7 +83,7 @@ These CSV files contain fundamental data related to various customer transaction
 ## 📦 Package Design
 
 ### 1. Control Flow
-
+![Control Flow](images/Control%20Flow.png)
 
 - **Foreach Loop Container**  
   Iterates over all CSV files in the source folder.
