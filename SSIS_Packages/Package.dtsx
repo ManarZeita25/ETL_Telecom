@@ -12,8 +12,8 @@
   DTS:MaxErrorCount="100"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="84"
-  DTS:VersionGUID="{01BF4165-D8D2-407E-8C10-25921723982D}">
+  DTS:VersionBuild="93"
+  DTS:VersionGUID="{C2789FDF-529D-4E8B-B390-2A81AEBDA7E9}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -321,22 +321,22 @@
                           cachedDataType="str"
                           cachedLength="9"
                           cachedName="imsi"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[imsi]" />
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[imsi]" />
                         <inputColumn
                           refId="Package\Foreach Loop Container\Data Flow Task\Conditional Split RejectedRows and ValidRows.Inputs[Conditional Split Input].Columns[cell]"
                           cachedDataType="i4"
                           cachedName="cell"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[cell]" />
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[cell]" />
                         <inputColumn
                           refId="Package\Foreach Loop Container\Data Flow Task\Conditional Split RejectedRows and ValidRows.Inputs[Conditional Split Input].Columns[lac]"
                           cachedDataType="i4"
                           cachedName="lac"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[lac]" />
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[lac]" />
                         <inputColumn
                           refId="Package\Foreach Loop Container\Data Flow Task\Conditional Split RejectedRows and ValidRows.Inputs[Conditional Split Input].Columns[event_ts]"
                           cachedDataType="dbTimeStamp"
                           cachedName="event_ts"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[event_ts]" />
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[event_ts]" />
                       </inputColumns>
                       <externalMetadataColumns />
                     </input>
@@ -356,7 +356,7 @@
                           containsID="true"
                           dataType="System.String"
                           description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
-                          name="Expression">[ISNULL](#{Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[imsi]}) || [ISNULL](#{Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[cell]}) || [ISNULL](#{Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[lac]}) || [ISNULL](#{Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[event_ts]})</property>
+                          name="Expression">[ISNULL](#{Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[imsi]}) || [ISNULL](#{Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[cell]}) || [ISNULL](#{Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[lac]}) || [ISNULL](#{Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[event_ts]})</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -384,7 +384,7 @@
                           containsID="true"
                           dataType="System.String"
                           description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
-                          name="Expression">![ISNULL](#{Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[imsi]}) &amp;&amp; ![ISNULL](#{Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[cell]}) &amp;&amp; ![ISNULL](#{Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[lac]}) &amp;&amp; ![ISNULL](#{Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[event_ts]})</property>
+                          name="Expression">![ISNULL](#{Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[imsi]}) &amp;&amp; ![ISNULL](#{Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[cell]}) &amp;&amp; ![ISNULL](#{Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[lac]}) &amp;&amp; ![ISNULL](#{Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[event_ts]})</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -817,6 +817,80 @@
                   </outputs>
                 </component>
                 <component
+                  refId="Package\Foreach Loop Container\Data Flow Task\GET Subscriber_id"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="GET Subscriber_id"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Foreach Loop Container\Data Flow Task\GET Subscriber_id.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\GET Subscriber_id.Inputs[Derived Column Input].Columns[subscriber_id]"
+                          cachedDataType="i4"
+                          cachedName="subscriber_id"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\Lookup-Subscriber_id.Outputs[Lookup Match Output].Columns[subscriber_id]"
+                          truncationRowDisposition="FailComponent"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[ISNULL](#{Package\Foreach Loop Container\Data Flow Task\Lookup-Subscriber_id.Outputs[Lookup Match Output].Columns[subscriber_id]}) ? -99999 : #{Package\Foreach Loop Container\Data Flow Task\Lookup-Subscriber_id.Outputs[Lookup Match Output].Columns[subscriber_id]}</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">ISNULL(subscriber_id) ? -99999 : subscriber_id</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container\Data Flow Task\GET Subscriber_id.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Foreach Loop Container\Data Flow Task\GET Subscriber_id.Inputs[Derived Column Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Foreach Loop Container\Data Flow Task\GET Subscriber_id.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Foreach Loop Container\Data Flow Task\GET Subscriber_id.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\GET Subscriber_id.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\GET Subscriber_id.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\GET Subscriber_id.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\GET Subscriber_id.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
                   refId="Package\Foreach Loop Container\Data Flow Task\Get TAC-SNR-"
                   componentClassID="Microsoft.DerivedColumn"
                   contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
@@ -835,7 +909,7 @@
                           cachedDataType="str"
                           cachedLength="15"
                           cachedName="imei"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[imei]" />
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[imei]" />
                       </inputColumns>
                       <externalMetadataColumns />
                     </input>
@@ -862,7 +936,7 @@
                               containsID="true"
                               dataType="System.String"
                               description="Derived Column Expression"
-                              name="Expression">[ISNULL](#{Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[imei]}) || [LEN](#{Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[imei]}) &lt; 15 ? "-99999" : [SUBSTRING](#{Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[imei]},1,8)</property>
+                              name="Expression">[ISNULL](#{Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[imei]}) || [LEN](#{Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[imei]}) &lt; 15 ? "-99999" : [SUBSTRING](#{Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[imei]},1,8)</property>
                             <property
                               containsID="true"
                               dataType="System.String"
@@ -885,7 +959,7 @@
                               containsID="true"
                               dataType="System.String"
                               description="Derived Column Expression"
-                              name="Expression">[ISNULL](#{Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[imei]}) || [LEN](#{Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[imei]}) &lt; 15 ? "-99999" : [SUBSTRING](#{Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[imei]},9,6)</property>
+                              name="Expression">[ISNULL](#{Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[imei]}) || [LEN](#{Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[imei]}) &lt; 15 ? "-99999" : [SUBSTRING](#{Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[imei]},9,6)</property>
                             <property
                               containsID="true"
                               dataType="System.String"
@@ -958,7 +1032,7 @@ where [refTable].[IMSI] = ?</property>
                       dataType="System.Int32"
                       description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
                       name="NoMatchBehavior"
-                      typeConverter="LookupNoMatchBehavior">1</property>
+                      typeConverter="LookupNoMatchBehavior">0</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
@@ -1028,6 +1102,7 @@ where [refTable].[IMSI] = ?</property>
                     <output
                       refId="Package\Foreach Loop Container\Data Flow Task\Lookup-Subscriber_id.Outputs[Lookup Match Output]"
                       errorOrTruncationOperation="Lookup"
+                      errorRowDisposition="IgnoreFailure"
                       exclusionGroup="1"
                       name="Lookup Match Output"
                       synchronousInputId="Package\Foreach Loop Container\Data Flow Task\Lookup-Subscriber_id.Inputs[Lookup Input]">
@@ -1160,7 +1235,7 @@ where [refTable].[IMSI] = ?</property>
                           cachedLength="9"
                           cachedName="imsi"
                           externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IMSI]"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[imsi]" />
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[imsi]" />
                         <inputColumn
                           refId="Package\Foreach Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[imei]"
                           cachedCodepage="1252"
@@ -1168,19 +1243,19 @@ where [refTable].[IMSI] = ?</property>
                           cachedLength="15"
                           cachedName="imei"
                           externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IMEI]"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[imei]" />
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[imei]" />
                         <inputColumn
                           refId="Package\Foreach Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[cell]"
                           cachedDataType="i4"
                           cachedName="cell"
                           externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CELL]"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[cell]" />
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[cell]" />
                         <inputColumn
                           refId="Package\Foreach Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[lac]"
                           cachedDataType="i4"
                           cachedName="lac"
                           externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LAC]"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[lac]" />
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[lac]" />
                         <inputColumn
                           refId="Package\Foreach Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[event_type]"
                           cachedCodepage="1252"
@@ -1188,26 +1263,25 @@ where [refTable].[IMSI] = ?</property>
                           cachedLength="1"
                           cachedName="event_type"
                           externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EVENT_TYPE]"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[event_type]" />
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[event_type]" />
                         <inputColumn
                           refId="Package\Foreach Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[event_ts]"
                           cachedDataType="dbTimeStamp"
                           cachedName="event_ts"
                           externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EVENT_TS]"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[event_ts]" />
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[event_ts]" />
                         <inputColumn
                           refId="Package\Foreach Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[id]"
                           cachedDataType="i4"
                           cachedName="id"
                           externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[transaction_id]"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[id]" />
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[id]" />
                         <inputColumn
                           refId="Package\Foreach Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[subscriber_id]"
-                          cachedDataType="wstr"
-                          cachedLength="6"
+                          cachedDataType="i4"
                           cachedName="subscriber_id"
                           externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[subscriber_id]"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[subscriber_id]" />
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\Lookup-Subscriber_id.Outputs[Lookup Match Output].Columns[subscriber_id]" />
                         <inputColumn
                           refId="Package\Foreach Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TAC]"
                           cachedDataType="wstr"
@@ -1385,7 +1459,7 @@ where [refTable].[IMSI] = ?</property>
                           cachedLength="9"
                           cachedName="imsi"
                           externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[IMSI]"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[imsi]" />
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[imsi]" />
                         <inputColumn
                           refId="Package\Foreach Loop Container\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[imei]"
                           cachedCodepage="1252"
@@ -1393,19 +1467,19 @@ where [refTable].[IMSI] = ?</property>
                           cachedLength="15"
                           cachedName="imei"
                           externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[IMEI]"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[imei]" />
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[imei]" />
                         <inputColumn
                           refId="Package\Foreach Loop Container\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[cell]"
                           cachedDataType="i4"
                           cachedName="cell"
                           externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[CELL]"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[cell]" />
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[cell]" />
                         <inputColumn
                           refId="Package\Foreach Loop Container\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[lac]"
                           cachedDataType="i4"
                           cachedName="lac"
                           externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[LAC]"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[lac]" />
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[lac]" />
                         <inputColumn
                           refId="Package\Foreach Loop Container\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[event_type]"
                           cachedCodepage="1252"
@@ -1413,19 +1487,19 @@ where [refTable].[IMSI] = ?</property>
                           cachedLength="1"
                           cachedName="event_type"
                           externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[EVENT_TYPE]"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[event_type]" />
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[event_type]" />
                         <inputColumn
                           refId="Package\Foreach Loop Container\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[event_ts]"
                           cachedDataType="dbTimeStamp"
                           cachedName="event_ts"
                           externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[EVENT_TS]"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[event_ts]" />
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[event_ts]" />
                         <inputColumn
                           refId="Package\Foreach Loop Container\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[id]"
                           cachedDataType="i4"
                           cachedName="id"
                           externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[transaction_id]"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[id]" />
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[id]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -1582,7 +1656,7 @@ where [refTable].[IMSI] = ?</property>
                           cachedLength="9"
                           cachedName="imsi"
                           externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\Rejected_Transactions.Inputs[OLE DB Destination Input].ExternalColumns[IMSI]"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[imsi]" />
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[imsi]" />
                         <inputColumn
                           refId="Package\Foreach Loop Container\Data Flow Task\Rejected_Transactions.Inputs[OLE DB Destination Input].Columns[imei]"
                           cachedCodepage="1252"
@@ -1590,19 +1664,19 @@ where [refTable].[IMSI] = ?</property>
                           cachedLength="15"
                           cachedName="imei"
                           externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\Rejected_Transactions.Inputs[OLE DB Destination Input].ExternalColumns[IMEI]"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[imei]" />
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[imei]" />
                         <inputColumn
                           refId="Package\Foreach Loop Container\Data Flow Task\Rejected_Transactions.Inputs[OLE DB Destination Input].Columns[cell]"
                           cachedDataType="i4"
                           cachedName="cell"
                           externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\Rejected_Transactions.Inputs[OLE DB Destination Input].ExternalColumns[CELL]"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[cell]" />
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[cell]" />
                         <inputColumn
                           refId="Package\Foreach Loop Container\Data Flow Task\Rejected_Transactions.Inputs[OLE DB Destination Input].Columns[lac]"
                           cachedDataType="i4"
                           cachedName="lac"
                           externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\Rejected_Transactions.Inputs[OLE DB Destination Input].ExternalColumns[LAC]"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[lac]" />
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[lac]" />
                         <inputColumn
                           refId="Package\Foreach Loop Container\Data Flow Task\Rejected_Transactions.Inputs[OLE DB Destination Input].Columns[event_type]"
                           cachedCodepage="1252"
@@ -1610,19 +1684,19 @@ where [refTable].[IMSI] = ?</property>
                           cachedLength="1"
                           cachedName="event_type"
                           externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\Rejected_Transactions.Inputs[OLE DB Destination Input].ExternalColumns[EVENT_TYPE]"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[event_type]" />
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[event_type]" />
                         <inputColumn
                           refId="Package\Foreach Loop Container\Data Flow Task\Rejected_Transactions.Inputs[OLE DB Destination Input].Columns[event_ts]"
                           cachedDataType="dbTimeStamp"
                           cachedName="event_ts"
                           externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\Rejected_Transactions.Inputs[OLE DB Destination Input].ExternalColumns[EVENT_TS]"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[event_ts]" />
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[event_ts]" />
                         <inputColumn
                           refId="Package\Foreach Loop Container\Data Flow Task\Rejected_Transactions.Inputs[OLE DB Destination Input].Columns[id]"
                           cachedDataType="i4"
                           cachedName="id"
                           externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\Rejected_Transactions.Inputs[OLE DB Destination Input].ExternalColumns[transaction_id]"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[id]" />
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[id]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -1719,22 +1793,22 @@ where [refTable].[IMSI] = ?</property>
                           cachedDataType="str"
                           cachedLength="9"
                           cachedName="imsi"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[imsi]" />
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[imsi]" />
                         <inputColumn
                           refId="Package\Foreach Loop Container\Data Flow Task\RejectionReason.Inputs[Derived Column Input].Columns[cell]"
                           cachedDataType="i4"
                           cachedName="cell"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[cell]" />
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[cell]" />
                         <inputColumn
                           refId="Package\Foreach Loop Container\Data Flow Task\RejectionReason.Inputs[Derived Column Input].Columns[lac]"
                           cachedDataType="i4"
                           cachedName="lac"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[lac]" />
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[lac]" />
                         <inputColumn
                           refId="Package\Foreach Loop Container\Data Flow Task\RejectionReason.Inputs[Derived Column Input].Columns[event_ts]"
                           cachedDataType="dbTimeStamp"
                           cachedName="event_ts"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[event_ts]" />
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[event_ts]" />
                       </inputColumns>
                       <externalMetadataColumns />
                     </input>
@@ -1761,7 +1835,7 @@ where [refTable].[IMSI] = ?</property>
                               containsID="true"
                               dataType="System.String"
                               description="Derived Column Expression"
-                              name="Expression">[ISNULL](#{Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[imsi]}) ? "IMSI is null" : [ISNULL](#{Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[cell]}) ? "CELL is null" : [ISNULL](#{Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[lac]}) ? "LAC is null" : [ISNULL](#{Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[event_ts]}) ? "EVENT_TS is null" : "Valid"</property>
+                              name="Expression">[ISNULL](#{Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[imsi]}) ? "IMSI is null" : [ISNULL](#{Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[cell]}) ? "CELL is null" : [ISNULL](#{Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[lac]}) ? "LAC is null" : [ISNULL](#{Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[event_ts]}) ? "EVENT_TS is null" : "Valid"</property>
                             <property
                               containsID="true"
                               dataType="System.String"
@@ -1791,6 +1865,201 @@ where [refTable].[IMSI] = ?</property>
                           refId="Package\Foreach Loop Container\Data Flow Task\RejectionReason.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                           dataType="i4"
                           lineageId="Package\Foreach Loop Container\Data Flow Task\RejectionReason.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach Loop Container\Data Flow Task\Replaces Null Values"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Replaces Null Values"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Foreach Loop Container\Data Flow Task\Replaces Null Values.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\Replaces Null Values.Inputs[Derived Column Input].Columns[imsi]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="9"
+                          cachedName="imsi"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[imsi]"
+                          truncationRowDisposition="FailComponent"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_STR,9,1252)(#{Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[imsi]} == "" ? NULL(DT_WSTR,9) : #{Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[imsi]})</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_STR,9,1252)(imsi == "" ? NULL(DT_WSTR,9) : imsi)</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\Replaces Null Values.Inputs[Derived Column Input].Columns[imei]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="15"
+                          cachedName="imei"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[imei]"
+                          truncationRowDisposition="FailComponent"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_STR,14,1252)(#{Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[imei]} == "" ? NULL(DT_WSTR,14) : #{Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[imei]})</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_STR,14,1252)(imei == "" ? NULL(DT_WSTR,14) : imei)</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\Replaces Null Values.Inputs[Derived Column Input].Columns[cell]"
+                          cachedDataType="i4"
+                          cachedName="cell"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[cell]"
+                          truncationRowDisposition="FailComponent"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_I4)(#{Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[cell]} == 0 ? NULL(DT_I4) : #{Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[cell]})</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_I4)(cell == 0 ? NULL(DT_I4) : cell)</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\Replaces Null Values.Inputs[Derived Column Input].Columns[lac]"
+                          cachedDataType="i4"
+                          cachedName="lac"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[lac]"
+                          truncationRowDisposition="FailComponent"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_I4)(#{Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[lac]} == 0 ? NULL(DT_I4) : #{Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[lac]})</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_I4)(lac == 0 ? NULL(DT_I4) : lac)</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\Replaces Null Values.Inputs[Derived Column Input].Columns[event_type]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="event_type"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[event_type]"
+                          truncationRowDisposition="FailComponent"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_STR,1,1252)(#{Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[event_type]} == "" ? NULL(DT_WSTR,1) : #{Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[event_type]})</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_STR,1,1252)(event_type == "" ? NULL(DT_WSTR,1) : event_type)</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\Replaces Null Values.Inputs[Derived Column Input].Columns[event_ts]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="event_ts"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[event_ts]"
+                          truncationRowDisposition="FailComponent"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[ISNULL](#{Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[event_ts]}) ? NULL(DT_DATE) : (DT_DATE)#{Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[event_ts]}</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">ISNULL(event_ts) ? NULL(DT_DATE) : (DT_DATE)event_ts</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container\Data Flow Task\Replaces Null Values.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Foreach Loop Container\Data Flow Task\Replaces Null Values.Inputs[Derived Column Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Foreach Loop Container\Data Flow Task\Replaces Null Values.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Foreach Loop Container\Data Flow Task\Replaces Null Values.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\Replaces Null Values.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\Replaces Null Values.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task\Replaces Null Values.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task\Replaces Null Values.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
                       </outputColumns>
@@ -1885,377 +2154,6 @@ where [refTable].[IMSI] = ?</property>
                     </output>
                   </outputs>
                 </component>
-                <component
-                  refId="Package\Foreach Loop Container\Data Flow Task\Subscriber_id"
-                  componentClassID="Microsoft.DerivedColumn"
-                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-                  name="Subscriber_id"
-                  usesDispositions="true">
-                  <inputs>
-                    <input
-                      refId="Package\Foreach Loop Container\Data Flow Task\Subscriber_id.Inputs[Derived Column Input]"
-                      description="Input to the Derived Column Transformation"
-                      name="Derived Column Input">
-                      <externalMetadataColumns />
-                    </input>
-                  </inputs>
-                  <outputs>
-                    <output
-                      refId="Package\Foreach Loop Container\Data Flow Task\Subscriber_id.Outputs[Derived Column Output]"
-                      description="Default Output of the Derived Column Transformation"
-                      exclusionGroup="1"
-                      name="Derived Column Output"
-                      synchronousInputId="Package\Foreach Loop Container\Data Flow Task\Subscriber_id.Inputs[Derived Column Input]">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\Foreach Loop Container\Data Flow Task\Subscriber_id.Outputs[Derived Column Output].Columns[subscriber_id]"
-                          dataType="wstr"
-                          errorOrTruncationOperation="Computation"
-                          errorRowDisposition="FailComponent"
-                          length="6"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Subscriber_id.Outputs[Derived Column Output].Columns[subscriber_id]"
-                          name="subscriber_id"
-                          truncationRowDisposition="FailComponent">
-                          <properties>
-                            <property
-                              containsID="true"
-                              dataType="System.String"
-                              description="Derived Column Expression"
-                              name="Expression">"-99999"</property>
-                            <property
-                              containsID="true"
-                              dataType="System.String"
-                              description="Derived Column Friendly Expression"
-                              expressionType="Notify"
-                              name="FriendlyExpression">"-99999"</property>
-                          </properties>
-                        </outputColumn>
-                      </outputColumns>
-                      <externalMetadataColumns />
-                    </output>
-                    <output
-                      refId="Package\Foreach Loop Container\Data Flow Task\Subscriber_id.Outputs[Derived Column Error Output]"
-                      description="Error Output of the Derived Column Transformation"
-                      exclusionGroup="1"
-                      isErrorOut="true"
-                      name="Derived Column Error Output"
-                      synchronousInputId="Package\Foreach Loop Container\Data Flow Task\Subscriber_id.Inputs[Derived Column Input]">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\Foreach Loop Container\Data Flow Task\Subscriber_id.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                          dataType="i4"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Subscriber_id.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                          name="ErrorCode"
-                          specialFlags="1" />
-                        <outputColumn
-                          refId="Package\Foreach Loop Container\Data Flow Task\Subscriber_id.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                          dataType="i4"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Subscriber_id.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                          name="ErrorColumn"
-                          specialFlags="2" />
-                      </outputColumns>
-                      <externalMetadataColumns />
-                    </output>
-                  </outputs>
-                </component>
-                <component
-                  refId="Package\Foreach Loop Container\Data Flow Task\Union All"
-                  componentClassID="Microsoft.UnionAll"
-                  contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
-                  description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
-                  name="Union All"
-                  version="1">
-                  <inputs>
-                    <input
-                      refId="Package\Foreach Loop Container\Data Flow Task\Union All.Inputs[Union All Input 1]"
-                      dangling="true"
-                      hasSideEffects="true"
-                      name="Union All Input 1">
-                      <externalMetadataColumns />
-                    </input>
-                    <input
-                      refId="Package\Foreach Loop Container\Data Flow Task\Union All.Inputs[Union All Input 2]"
-                      hasSideEffects="true"
-                      name="Union All Input 2">
-                      <inputColumns>
-                        <inputColumn
-                          refId="Package\Foreach Loop Container\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[id]"
-                          cachedDataType="i4"
-                          cachedName="id"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[id]">
-                          <properties>
-                            <property
-                              containsID="true"
-                              dataType="System.Int32"
-                              description="Output column lineage ID"
-                              name="OutputColumnLineageID">#{Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[id]}</property>
-                          </properties>
-                        </inputColumn>
-                        <inputColumn
-                          refId="Package\Foreach Loop Container\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[imsi]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="9"
-                          cachedName="imsi"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[imsi]">
-                          <properties>
-                            <property
-                              containsID="true"
-                              dataType="System.Int32"
-                              description="Output column lineage ID"
-                              name="OutputColumnLineageID">#{Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[imsi]}</property>
-                          </properties>
-                        </inputColumn>
-                        <inputColumn
-                          refId="Package\Foreach Loop Container\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[imei]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="15"
-                          cachedName="imei"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[imei]">
-                          <properties>
-                            <property
-                              containsID="true"
-                              dataType="System.Int32"
-                              description="Output column lineage ID"
-                              name="OutputColumnLineageID">#{Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[imei]}</property>
-                          </properties>
-                        </inputColumn>
-                        <inputColumn
-                          refId="Package\Foreach Loop Container\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[cell]"
-                          cachedDataType="i4"
-                          cachedName="cell"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[cell]">
-                          <properties>
-                            <property
-                              containsID="true"
-                              dataType="System.Int32"
-                              description="Output column lineage ID"
-                              name="OutputColumnLineageID">#{Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[cell]}</property>
-                          </properties>
-                        </inputColumn>
-                        <inputColumn
-                          refId="Package\Foreach Loop Container\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[lac]"
-                          cachedDataType="i4"
-                          cachedName="lac"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[lac]">
-                          <properties>
-                            <property
-                              containsID="true"
-                              dataType="System.Int32"
-                              description="Output column lineage ID"
-                              name="OutputColumnLineageID">#{Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[lac]}</property>
-                          </properties>
-                        </inputColumn>
-                        <inputColumn
-                          refId="Package\Foreach Loop Container\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[event_type]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="1"
-                          cachedName="event_type"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[event_type]">
-                          <properties>
-                            <property
-                              containsID="true"
-                              dataType="System.Int32"
-                              description="Output column lineage ID"
-                              name="OutputColumnLineageID">#{Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[event_type]}</property>
-                          </properties>
-                        </inputColumn>
-                        <inputColumn
-                          refId="Package\Foreach Loop Container\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[event_ts]"
-                          cachedDataType="dbTimeStamp"
-                          cachedName="event_ts"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[event_ts]">
-                          <properties>
-                            <property
-                              containsID="true"
-                              dataType="System.Int32"
-                              description="Output column lineage ID"
-                              name="OutputColumnLineageID">#{Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[event_ts]}</property>
-                          </properties>
-                        </inputColumn>
-                      </inputColumns>
-                      <externalMetadataColumns />
-                    </input>
-                    <input
-                      refId="Package\Foreach Loop Container\Data Flow Task\Union All.Inputs[Union All Input 3]"
-                      hasSideEffects="true"
-                      name="Union All Input 3">
-                      <inputColumns>
-                        <inputColumn
-                          refId="Package\Foreach Loop Container\Data Flow Task\Union All.Inputs[Union All Input 3].Columns[id]"
-                          cachedDataType="i4"
-                          cachedName="id"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[id]">
-                          <properties>
-                            <property
-                              containsID="true"
-                              dataType="System.Int32"
-                              description="Output column lineage ID"
-                              name="OutputColumnLineageID">#{Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[id]}</property>
-                          </properties>
-                        </inputColumn>
-                        <inputColumn
-                          refId="Package\Foreach Loop Container\Data Flow Task\Union All.Inputs[Union All Input 3].Columns[imsi]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="9"
-                          cachedName="imsi"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[imsi]">
-                          <properties>
-                            <property
-                              containsID="true"
-                              dataType="System.Int32"
-                              description="Output column lineage ID"
-                              name="OutputColumnLineageID">#{Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[imsi]}</property>
-                          </properties>
-                        </inputColumn>
-                        <inputColumn
-                          refId="Package\Foreach Loop Container\Data Flow Task\Union All.Inputs[Union All Input 3].Columns[imei]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="15"
-                          cachedName="imei"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[imei]">
-                          <properties>
-                            <property
-                              containsID="true"
-                              dataType="System.Int32"
-                              description="Output column lineage ID"
-                              name="OutputColumnLineageID">#{Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[imei]}</property>
-                          </properties>
-                        </inputColumn>
-                        <inputColumn
-                          refId="Package\Foreach Loop Container\Data Flow Task\Union All.Inputs[Union All Input 3].Columns[cell]"
-                          cachedDataType="i4"
-                          cachedName="cell"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[cell]">
-                          <properties>
-                            <property
-                              containsID="true"
-                              dataType="System.Int32"
-                              description="Output column lineage ID"
-                              name="OutputColumnLineageID">#{Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[cell]}</property>
-                          </properties>
-                        </inputColumn>
-                        <inputColumn
-                          refId="Package\Foreach Loop Container\Data Flow Task\Union All.Inputs[Union All Input 3].Columns[lac]"
-                          cachedDataType="i4"
-                          cachedName="lac"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[lac]">
-                          <properties>
-                            <property
-                              containsID="true"
-                              dataType="System.Int32"
-                              description="Output column lineage ID"
-                              name="OutputColumnLineageID">#{Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[lac]}</property>
-                          </properties>
-                        </inputColumn>
-                        <inputColumn
-                          refId="Package\Foreach Loop Container\Data Flow Task\Union All.Inputs[Union All Input 3].Columns[event_type]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="1"
-                          cachedName="event_type"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[event_type]">
-                          <properties>
-                            <property
-                              containsID="true"
-                              dataType="System.Int32"
-                              description="Output column lineage ID"
-                              name="OutputColumnLineageID">#{Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[event_type]}</property>
-                          </properties>
-                        </inputColumn>
-                        <inputColumn
-                          refId="Package\Foreach Loop Container\Data Flow Task\Union All.Inputs[Union All Input 3].Columns[event_ts]"
-                          cachedDataType="dbTimeStamp"
-                          cachedName="event_ts"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[event_ts]">
-                          <properties>
-                            <property
-                              containsID="true"
-                              dataType="System.Int32"
-                              description="Output column lineage ID"
-                              name="OutputColumnLineageID">#{Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[event_ts]}</property>
-                          </properties>
-                        </inputColumn>
-                        <inputColumn
-                          refId="Package\Foreach Loop Container\Data Flow Task\Union All.Inputs[Union All Input 3].Columns[subscriber_id]"
-                          cachedDataType="wstr"
-                          cachedLength="6"
-                          cachedName="subscriber_id"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Subscriber_id.Outputs[Derived Column Output].Columns[subscriber_id]">
-                          <properties>
-                            <property
-                              containsID="true"
-                              dataType="System.Int32"
-                              description="Output column lineage ID"
-                              name="OutputColumnLineageID">#{Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[subscriber_id]}</property>
-                          </properties>
-                        </inputColumn>
-                      </inputColumns>
-                      <externalMetadataColumns />
-                    </input>
-                  </inputs>
-                  <outputs>
-                    <output
-                      refId="Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1]"
-                      name="Union All Output 1">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[id]"
-                          dataType="i4"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[id]"
-                          name="id" />
-                        <outputColumn
-                          refId="Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[imsi]"
-                          codePage="1252"
-                          dataType="str"
-                          length="9"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[imsi]"
-                          name="imsi" />
-                        <outputColumn
-                          refId="Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[imei]"
-                          codePage="1252"
-                          dataType="str"
-                          length="15"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[imei]"
-                          name="imei" />
-                        <outputColumn
-                          refId="Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[cell]"
-                          dataType="i4"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[cell]"
-                          name="cell" />
-                        <outputColumn
-                          refId="Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[lac]"
-                          dataType="i4"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[lac]"
-                          name="lac" />
-                        <outputColumn
-                          refId="Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[event_type]"
-                          codePage="1252"
-                          dataType="str"
-                          length="1"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[event_type]"
-                          name="event_type" />
-                        <outputColumn
-                          refId="Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[event_ts]"
-                          dataType="dbTimeStamp"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[event_ts]"
-                          name="event_ts" />
-                        <outputColumn
-                          refId="Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[subscriber_id]"
-                          dataType="wstr"
-                          length="6"
-                          lineageId="Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[subscriber_id]"
-                          name="subscriber_id" />
-                      </outputColumns>
-                      <externalMetadataColumns />
-                    </output>
-                  </outputs>
-                </component>
               </components>
               <paths>
                 <path
@@ -2270,9 +2168,14 @@ where [refTable].[IMSI] = ?</property>
                   startId="Package\Foreach Loop Container\Data Flow Task\RejectionReason.Outputs[Derived Column Output]" />
                 <path
                   refId="Package\Foreach Loop Container\Data Flow Task.Paths[Derived Column Output2]"
-                  endId="Package\Foreach Loop Container\Data Flow Task\Union All.Inputs[Union All Input 3]"
+                  endId="Package\Foreach Loop Container\Data Flow Task\Get TAC-SNR-.Inputs[Derived Column Input]"
                   name="Derived Column Output"
-                  startId="Package\Foreach Loop Container\Data Flow Task\Subscriber_id.Outputs[Derived Column Output]" />
+                  startId="Package\Foreach Loop Container\Data Flow Task\GET Subscriber_id.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Foreach Loop Container\Data Flow Task.Paths[Derived Column Output3]"
+                  endId="Package\Foreach Loop Container\Data Flow Task\Row Count- TotalRecords.Inputs[Row Count Input 1]"
+                  name="Derived Column Output"
+                  startId="Package\Foreach Loop Container\Data Flow Task\Replaces Null Values.Outputs[Derived Column Output]" />
                 <path
                   refId="Package\Foreach Loop Container\Data Flow Task.Paths[Flat File Source Error Output]"
                   endId="Package\Foreach Loop Container\Data Flow Task\FF errors Destination.Inputs[OLE DB Destination Input]"
@@ -2280,19 +2183,14 @@ where [refTable].[IMSI] = ?</property>
                   startId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Error Output]" />
                 <path
                   refId="Package\Foreach Loop Container\Data Flow Task.Paths[Flat File Source Output]"
-                  endId="Package\Foreach Loop Container\Data Flow Task\Row Count- TotalRecords.Inputs[Row Count Input 1]"
+                  endId="Package\Foreach Loop Container\Data Flow Task\Replaces Null Values.Inputs[Derived Column Input]"
                   name="Flat File Source Output"
                   startId="Package\Foreach Loop Container\Data Flow Task\Flat File Source.Outputs[Flat File Source Output]" />
                 <path
                   refId="Package\Foreach Loop Container\Data Flow Task.Paths[Lookup Match Output]"
-                  endId="Package\Foreach Loop Container\Data Flow Task\Union All.Inputs[Union All Input 2]"
+                  endId="Package\Foreach Loop Container\Data Flow Task\GET Subscriber_id.Inputs[Derived Column Input]"
                   name="Lookup Match Output"
                   startId="Package\Foreach Loop Container\Data Flow Task\Lookup-Subscriber_id.Outputs[Lookup Match Output]" />
-                <path
-                  refId="Package\Foreach Loop Container\Data Flow Task.Paths[Lookup No Match Output]"
-                  endId="Package\Foreach Loop Container\Data Flow Task\Subscriber_id.Inputs[Derived Column Input]"
-                  name="Lookup No Match Output"
-                  startId="Package\Foreach Loop Container\Data Flow Task\Lookup-Subscriber_id.Outputs[Lookup No Match Output]" />
                 <path
                   refId="Package\Foreach Loop Container\Data Flow Task.Paths[OLE DB Destination Error Output]"
                   endId="Package\Foreach Loop Container\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input]"
@@ -2319,11 +2217,6 @@ where [refTable].[IMSI] = ?</property>
                   name="Row Count Output 1"
                   startId="Package\Foreach Loop Container\Data Flow Task\Row Count -AcceptedRecords.Outputs[Row Count Output 1]" />
                 <path
-                  refId="Package\Foreach Loop Container\Data Flow Task.Paths[Union All Output 1]"
-                  endId="Package\Foreach Loop Container\Data Flow Task\Get TAC-SNR-.Inputs[Derived Column Input]"
-                  name="Union All Output 1"
-                  startId="Package\Foreach Loop Container\Data Flow Task\Union All.Outputs[Union All Output 1]" />
-                <path
                   refId="Package\Foreach Loop Container\Data Flow Task.Paths[ValidRows]"
                   endId="Package\Foreach Loop Container\Data Flow Task\Row Count -AcceptedRecords.Inputs[Row Count Input 1]"
                   name="ValidRows"
@@ -2333,19 +2226,39 @@ where [refTable].[IMSI] = ?</property>
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
-          DTS:refId="Package\Foreach Loop Container\Execute SQL Task"
+          DTS:refId="Package\Foreach Loop Container\File System Task- Move File"
+          DTS:CreationName="Microsoft.FileSystemTask"
+          DTS:Description="File System Task"
+          DTS:DTSID="{EA3E9D05-0648-41EB-A95F-DB646A9C7C20}"
+          DTS:ExecutableType="Microsoft.FileSystemTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="File System Task- Move File"
+          DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <FileSystemData
+              TaskOperationType="MoveFile"
+              TaskSourcePath="User::FileName"
+              TaskIsSourceVariable="True"
+              TaskDestinationPath="User::Dest_Path"
+              TaskIsDestinationVariable="True" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\SQL-Insert ETL_Log"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
           DTS:DTSID="{C06C8529-418E-4460-8451-A58BE486580A}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
-          DTS:ObjectName="Execute SQL Task"
+          DTS:ObjectName="SQL-Insert ETL_Log"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:EventHandlers>
             <DTS:EventHandler
-              DTS:refId="Package\Foreach Loop Container\Execute SQL Task.EventHandlers[OnError]"
+              DTS:refId="Package\Foreach Loop Container\SQL-Insert ETL_Log.EventHandlers[OnError]"
               DTS:CreationName="OnError"
               DTS:DTSID="{CAB1BACE-ADC8-416E-871C-737E7F7C9BC2}"
               DTS:EventID="0"
@@ -2397,43 +2310,24 @@ where [refTable].[IMSI] = ?</property>
             </SQLTask:SqlTaskData>
           </DTS:ObjectData>
         </DTS:Executable>
-        <DTS:Executable
-          DTS:refId="Package\Foreach Loop Container\File System Task"
-          DTS:CreationName="Microsoft.FileSystemTask"
-          DTS:Description="File System Task"
-          DTS:DTSID="{EA3E9D05-0648-41EB-A95F-DB646A9C7C20}"
-          DTS:ExecutableType="Microsoft.FileSystemTask"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="File System Task"
-          DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
-          <DTS:Variables />
-          <DTS:ObjectData>
-            <FileSystemData
-              TaskSourcePath="User::FileName"
-              TaskIsSourceVariable="True"
-              TaskDestinationPath="User::Dest_Path"
-              TaskIsDestinationVariable="True" />
-          </DTS:ObjectData>
-        </DTS:Executable>
       </DTS:Executables>
       <DTS:PrecedenceConstraints>
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint]"
           DTS:CreationName=""
-          DTS:DTSID="{551C5A9A-7B82-4551-BB6D-6067661A32A2}"
+          DTS:DTSID="{BF32BBE6-14DC-45E4-AFB7-DBF4D8D685FB}"
           DTS:From="Package\Foreach Loop Container\Data Flow Task"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
-          DTS:To="Package\Foreach Loop Container\Execute SQL Task" />
+          DTS:To="Package\Foreach Loop Container\SQL-Insert ETL_Log" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 1]"
           DTS:CreationName=""
-          DTS:DTSID="{1180703C-C416-470D-8DFD-4E6E4A4CD2FC}"
-          DTS:From="Package\Foreach Loop Container\Execute SQL Task"
+          DTS:DTSID="{180FFCF9-7393-454E-91A6-BF72BD278148}"
+          DTS:From="Package\Foreach Loop Container\SQL-Insert ETL_Log"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 1"
-          DTS:To="Package\Foreach Loop Container\File System Task" />
+          DTS:To="Package\Foreach Loop Container\File System Task- Move File" />
       </DTS:PrecedenceConstraints>
       <DTS:ForEachVariableMappings>
         <DTS:ForEachVariableMapping
@@ -2483,41 +2377,29 @@ where [refTable].[IMSI] = ?</property>
         <NodeLayout
           Size="152,42.6666666666667"
           Id="Package\Foreach Loop Container\Data Flow Task"
-          TopLeft="72.0416634536039,2.99999783039105" />
+          TopLeft="84.5416628948103,21.1999969625474" />
         <NodeLayout
-          Size="164,42.6666666666667"
-          Id="Package\Foreach Loop Container\Execute SQL Task"
-          TopLeft="4.54166647108883,112.199992623329" />
+          Size="173.333333333334,42.6666666666667"
+          Id="Package\Foreach Loop Container\SQL-Insert ETL_Log"
+          TopLeft="67.6666636491815,124.549992034435" />
         <NodeLayout
-          Size="158.666666666667,42.6666666666667"
-          Id="Package\Foreach Loop Container\File System Task"
-          TopLeft="4.54166781219385,194.849990112782" />
+          Size="209.333333333334,42.6666666666667"
+          Id="Package\Foreach Loop Container\File System Task- Move File"
+          TopLeft="53.2916656328992,192.24999023676" />
         <EdgeLayout
           Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint]"
-          TopLeft="148.041663453604,45.6666644970577">
+          TopLeft="157.437496605329,63.8666636292141">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-61.499996982515,66.5333281262717"
+              EndConnector="0,60.6833284052212"
               Start="0,0"
-              End="-61.499996982515,59.0333281262717">
+              End="0,53.1833284052212">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,29.2666640631359" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,29.2666640631359"
-                    Point2="0,33.2666640631359"
-                    Point3="-4,33.2666640631359" />
-                  <mssgle:LineSegment
-                    End="-57.499996982515,33.2666640631359" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-57.499996982515,33.2666640631359"
-                    Point2="-61.499996982515,33.2666640631359"
-                    Point3="-61.499996982515,37.2666640631359" />
-                  <mssgle:LineSegment
-                    End="-61.499996982515,59.0333281262717" />
+                    End="0,53.1833284052212" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2528,18 +2410,18 @@ where [refTable].[IMSI] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 1]"
-          TopLeft="85.2083338083079,154.866659289996">
+          TopLeft="156.145831307707,167.216658701102">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,39.983330822786"
+              EndConnector="0,25.0333315356578"
               Start="0,0"
-              End="0,32.483330822786">
+              End="0,17.5333315356578">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,32.483330822786" />
+                    End="0,17.5333315356578" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2551,10 +2433,10 @@ where [refTable].[IMSI] = ?</property>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="229.333333333334,292.666666666667"
-          Size="229.333333333334,335.333333333334"
+          PanelSize="320,292.666666666667"
+          Size="320,336"
           Id="Package\Foreach Loop Container"
-          TopLeft="5.5,5.5" />
+          TopLeft="77.3749967869372,17.8499994111061" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -2564,135 +2446,103 @@ where [refTable].[IMSI] = ?</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="172,42.6666666666667"
-          Id="Package\Foreach Loop Container\Data Flow Task\OLE DB Destination"
-          TopLeft="45.499999254942,835.250004494189" />
-        <NodeLayout
-          Size="181.333333333334,42.6666666666667"
-          Id="Package\Foreach Loop Container\Data Flow Task\Lookup-Subscriber_id"
-          TopLeft="302.166666666667,210.833333333333" />
-        <NodeLayout
-          Size="142.666666666667,42.6666666666667"
-          Id="Package\Foreach Loop Container\Data Flow Task\Subscriber_id"
-          TopLeft="189.5,313.499999999999" />
-        <NodeLayout
-          Size="181.333333333334,42.6666666666667"
-          Id="Package\Foreach Loop Container\Data Flow Task\OLE DB Destination 1"
-          TopLeft="40.8333325882753,937.916671160856" />
-        <NodeLayout
           Size="198.666666666667,42.6666666666667"
           Id="Package\Foreach Loop Container\Data Flow Task\Row Count- TotalRecords"
-          TopLeft="293.5,108.166666666666" />
-        <NodeLayout
-          Size="152,42.6666666666667"
-          Id="Package\Foreach Loop Container\Data Flow Task\Flat File Source"
-          TopLeft="335.541677050913,9.83333312670383" />
+          TopLeft="395.999995417893,147.133336370786" />
         <NodeLayout
           Size="178.666666666667,42.6666666666667"
           Id="Package\Foreach Loop Container\Data Flow Task\FF errors Destination"
-          TopLeft="553.166666666667,108.166666666666" />
+          TopLeft="65.5,108.166666666666" />
+        <NodeLayout
+          Size="181.333333333334,42.6666666666667"
+          Id="Package\Foreach Loop Container\Data Flow Task\Lookup-Subscriber_id"
+          TopLeft="407.166661972801,216.000004649162" />
         <NodeLayout
           Size="216,42.6666666666667"
           Id="Package\Foreach Loop Container\Data Flow Task\Row Count -RejectedRecords"
-          TopLeft="301.499999254942,732.583337827523" />
-        <NodeLayout
-          Size="218.666666666667,42.6666666666667"
-          Id="Package\Foreach Loop Container\Data Flow Task\Row Count -AcceptedRecords"
-          TopLeft="22.1666659216087,732.583337827523" />
+          TopLeft="516.083322995653,594.133344429333" />
         <NodeLayout
           Size="145.333333333334,42.6666666666667"
           Id="Package\Foreach Loop Container\Data Flow Task\Get TAC-SNR-"
-          TopLeft="326.41666638727,467.916669094562" />
+          TopLeft="416.416662363957,361.533340833981" />
+        <NodeLayout
+          Size="218.666666666667,42.6666666666667"
+          Id="Package\Foreach Loop Container\Data Flow Task\Row Count -AcceptedRecords"
+          TopLeft="249.249989103526,594.133344429333" />
+        <NodeLayout
+          Size="181.333333333334,42.6666666666667"
+          Id="Package\Foreach Loop Container\Data Flow Task\OLE DB Destination 1"
+          TopLeft="269.166655714314,743.566680428186" />
+        <NodeLayout
+          Size="172,42.6666666666667"
+          Id="Package\Foreach Loop Container\Data Flow Task\OLE DB Destination"
+          TopLeft="270.083322548618,670.800012335776" />
+        <NodeLayout
+          Size="152,42.6666666666667"
+          Id="Package\Foreach Loop Container\Data Flow Task\Flat File Source"
+          TopLeft="316.833333333333,5.49999999999993" />
         <NodeLayout
           Size="185.333333333334,42.6666666666667"
           Id="Package\Foreach Loop Container\Data Flow Task\Rejected_Transactions"
-          TopLeft="316.833332588275,835.250004494189" />
+          TopLeft="537.66665604959,669.500012397765" />
         <NodeLayout
           Size="297.333333333334,42.6666666666667"
           Id="Package\Foreach Loop Container\Data Flow Task\Conditional Split RejectedRows and ValidRows"
-          TopLeft="260.833332588275,629.916671160856" />
+          TopLeft="334.166662643353,518.7666764609" />
         <NodeLayout
           Size="157.333333333334,42.6666666666667"
           Id="Package\Foreach Loop Container\Data Flow Task\RejectionReason"
-          TopLeft="323.833332960804,558.666669662793" />
-        <NodeLayout
-          Size="121.333333333334,42.6666666666667"
-          Id="Package\Foreach Loop Container\Data Flow Task\Union All"
-          TopLeft="339.458333007371,389.083334624767" />
+          TopLeft="409.166662419836,436.900008802413" />
         <EdgeLayout
           Id="Package\Foreach Loop Container\Data Flow Task.Paths[ValidRows]"
-          TopLeft="361.27777703272,672.583337827522">
+          TopLeft="434.611107087798,561.433343127567">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-229.777777777778,60.0000000000002"
+              EndConnector="-76.0277846509382,32.7000013017657"
               Start="0,0"
-              End="-229.777777777778,52.5000000000002">
+              End="-76.0277846509382,25.2000013017657">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.1926851025871" />
+                    End="0,9.18501390579671" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,20.1926851025871"
-                    Point2="0,24.1926851025871"
-                    Point3="-4,24.1926851025871" />
+                    Point1="0,9.18501390579671"
+                    Point2="0,13.1850139057967"
+                    Point3="-4,13.1850139057967" />
                   <mssgle:LineSegment
-                    End="-225.777777777778,24.1926851025871" />
+                    End="-72.0277846509382,13.1850139057967" />
                   <mssgle:CubicBezierSegment
-                    Point1="-225.777777777778,24.1926851025871"
-                    Point2="-229.777777777778,24.1926851025871"
-                    Point3="-229.777777777778,28.1926851025871" />
+                    Point1="-72.0277846509382,13.1850139057967"
+                    Point2="-76.0277846509382,13.1850139057967"
+                    Point3="-76.0277846509382,17.1850139057967" />
                   <mssgle:LineSegment
-                    End="-229.777777777778,52.5000000000002" />
+                    End="-76.0277846509382,25.2000013017657" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-138.239650607639,29.1926851025871,46.7015234375,9.7490234375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Foreach Loop Container\Data Flow Task.Paths[Union All Output 1]"
-          TopLeft="399.604166363987,431.750001291433">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,36.1666678031284"
-              Start="0,0"
-              End="0,28.6666678031284">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,28.6666678031284" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-8,6.3333339015642,16,16"
+              BoundingBox="-61.3646540442191,18.1850139057967,46.7015234375,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Foreach Loop Container\Data Flow Task.Paths[Row Count Output 12]"
-          TopLeft="131.499999254942,775.250004494189">
+          TopLeft="357.333322492739,636.800011095999">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60.0000000000001"
+              EndConnector="0,34.0000012397769"
               Start="0,0"
-              End="0,52.5000000000001">
+              End="0,26.5000012397769">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5000000000001" />
+                    End="0,26.5000012397769" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2703,18 +2553,18 @@ where [refTable].[IMSI] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Foreach Loop Container\Data Flow Task.Paths[Row Count Output 11]"
-          TopLeft="409.499999254942,775.250004494189">
+          TopLeft="627.208322855955,636.800011095999">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60.0000000000001"
+              EndConnector="0,32.7000013017656"
               Start="0,0"
-              End="0,52.5000000000001">
+              End="0,25.2000013017656">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5000000000001" />
+                    End="0,25.2000013017656" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2725,18 +2575,18 @@ where [refTable].[IMSI] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Foreach Loop Container\Data Flow Task.Paths[Row Count Output 1]"
-          TopLeft="392.833333333333,150.833333333333">
+          TopLeft="496.583328695347,189.800003037452">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,59.9999999999998"
+              EndConnector="0,26.2000016117095"
               Start="0,0"
-              End="0,52.4999999999998">
+              End="0,18.7000016117095">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.4999999999998" />
+                    End="0,18.7000016117095" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2747,230 +2597,114 @@ where [refTable].[IMSI] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Foreach Loop Container\Data Flow Task.Paths[RejectedRows]"
-          TopLeft="457.722221477164,672.583337827522">
+          TopLeft="531.055551532242,561.433343127567">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-48.2222222222222,60.0000000000001"
+              EndConnector="93.0277714634107,32.7000013017656"
               Start="0,0"
-              End="-48.2222222222222,52.5000000000001">
+              End="93.0277714634107,25.2000013017656">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.192685102587" />
+                    End="0,9.18501390579666" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,20.192685102587"
-                    Point2="0,24.192685102587"
-                    Point3="-4,24.192685102587" />
+                    Point1="0,9.18501390579666"
+                    Point2="0,13.1850139057967"
+                    Point3="4,13.1850139057967" />
                   <mssgle:LineSegment
-                    End="-44.2222222222222,24.192685102587" />
+                    End="89.0277714634107,13.1850139057967" />
                   <mssgle:CubicBezierSegment
-                    Point1="-44.2222222222222,24.192685102587"
-                    Point2="-48.2222222222222,24.192685102587"
-                    Point3="-48.2222222222222,28.192685102587" />
+                    Point1="89.0277714634107,13.1850139057967"
+                    Point2="93.0277714634107,13.1850139057967"
+                    Point3="93.0277714634107,17.1850139057967" />
                   <mssgle:LineSegment
-                    End="-48.2222222222222,52.5000000000001" />
+                    End="93.0277714634107,25.2000013017656" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-55.5536892361111,29.192685102587,62.88515625,11.6630859375"
+              BoundingBox="15.0713076067053,18.1850139057967,62.88515625,11.6630859375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Foreach Loop Container\Data Flow Task.Paths[OLE DB Destination Error Output]"
-          TopLeft="131.499999254942,877.916671160856">
+          TopLeft="357.958322464799,713.466679002443">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60.0000000000002"
+              EndConnector="0,30.1000014257428"
               Start="0,0"
-              End="0,52.5000000000002">
+              End="0,22.6000014257428">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5000000000002" />
+                    End="0,22.6000014257428" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-73.20890625,20.5332031250001,146.4178125,11.43359375"
+              BoundingBox="-73.20890625,5.58320383787139,146.4178125,11.43359375"
               RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Foreach Loop Container\Data Flow Task.Paths[Lookup No Match Output]"
-          TopLeft="363.944444444445,253.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-103.111111111111,59.9999999999999"
-              Start="0,0"
-              End="-103.111111111111,52.4999999999999">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.3148688046647" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.3148688046647"
-                    Point2="0,24.3148688046647"
-                    Point3="-4,24.3148688046647" />
-                  <mssgle:LineSegment
-                    End="-99.1111111111111,24.3148688046647" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-99.1111111111111,24.3148688046647"
-                    Point2="-103.111111111111,24.3148688046647"
-                    Point3="-103.111111111111,28.3148688046647" />
-                  <mssgle:LineSegment
-                    End="-103.111111111111,52.4999999999999" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-107.361942274306,29.3148688046647,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Foreach Loop Container\Data Flow Task.Paths[Lookup Match Output]"
-          TopLeft="420.368055392574,253.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,135.583334624767"
-              Start="0,0"
-              End="0,128.083334624767">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,128.083334624767" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,58.2369798123835,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Foreach Loop Container\Data Flow Task.Paths[Flat File Source Output]"
-          TopLeft="390.187505192123,52.4999997933705">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,55.666666873296"
-              Start="0,0"
-              End="0,48.166666873296">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,48.166666873296" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Foreach Loop Container\Data Flow Task.Paths[Flat File Source Error Output]"
-          TopLeft="435.541677050913,52.4999997933705">
+          TopLeft="368.833333333333,48.1666666666666">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="206.958322949087,55.6666668732955"
+              EndConnector="-214,59.9999999999999"
               Start="0,0"
-              End="206.958322949087,48.1666668732955">
+              End="-214,52.4999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,18.6145834172763" />
+                    End="0,20.3749999999999" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,18.6145834172763"
-                    Point2="0,22.6145834172763"
-                    Point3="4,22.6145834172763" />
+                    Point1="0,20.3749999999999"
+                    Point2="0,24.3749999999999"
+                    Point3="-4,24.3749999999999" />
                   <mssgle:LineSegment
-                    End="202.958322949087,22.6145834172763" />
+                    End="-210,24.3749999999999" />
                   <mssgle:CubicBezierSegment
-                    Point1="202.958322949087,22.6145834172763"
-                    Point2="206.958322949087,22.6145834172763"
-                    Point3="206.958322949087,26.6145834172763" />
+                    Point1="-210,24.3749999999999"
+                    Point2="-214,24.3749999999999"
+                    Point3="-214,28.3749999999999" />
                   <mssgle:LineSegment
-                    End="206.958322949087,48.1666668732955" />
+                    End="-214,52.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="39.8527747557937,27.6145834172763,127.2527734375,11.609375"
+              BoundingBox="-170.62638671875,29.3749999999999,127.2527734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Foreach Loop Container\Data Flow Task.Paths[Derived Column Output2]"
-          TopLeft="260.833333333333,356.166666666666">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="120.402777451815,32.9166679581004"
-              Start="0,0"
-              End="120.402777451815,25.4166679581004">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,15.4929508732352" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,15.4929508732352"
-                    Point2="0,19.4929508732352"
-                    Point3="4,19.4929508732352" />
-                  <mssgle:LineSegment
-                    End="116.402777451815,19.4929508732352" />
-                  <mssgle:CubicBezierSegment
-                    Point1="116.402777451815,19.4929508732352"
-                    Point2="120.402777451815,19.4929508732352"
-                    Point3="120.402777451815,23.4929508732352" />
-                  <mssgle:LineSegment
-                    End="120.402777451815,25.4166679581004" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\Foreach Loop Container\Data Flow Task.Paths[Derived Column Output1]"
-          TopLeft="405.999999441207,601.333336329459">
+          TopLeft="485.333329198261,479.566675469079">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,28.5833348313967"
+              EndConnector="0,39.2000009918211"
               Start="0,0"
-              End="0,21.0833348313967">
+              End="0,31.7000009918211">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,21.0833348313967" />
+                    End="0,31.7000009918211" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2981,18 +2715,128 @@ where [refTable].[IMSI] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Foreach Loop Container\Data Flow Task.Paths[Derived Column Output]"
-          TopLeft="400.791666340704,510.583335761228">
+          TopLeft="488.458329058563,404.200007500647">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,48.0833339015642"
+              EndConnector="0,32.7000013017654"
               Start="0,0"
-              End="0,40.5833339015642">
+              End="0,25.2000013017654">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,40.5833339015642" />
+                    End="0,25.2000013017654" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="165.333333333334,42.6666666666667"
+          Id="Package\Foreach Loop Container\Data Flow Task\GET Subscriber_id"
+          TopLeft="411.416662140439,287.46667280356" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\Data Flow Task.Paths[Lookup Match Output]"
+          TopLeft="495.958328723287,258.666671315828">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28.8000014877317"
+              Start="0,0"
+              End="0,21.3000014877317">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.3000014877317" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,4.84531324386586,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\Data Flow Task.Paths[Derived Column Output2]"
+          TopLeft="491.583328918865,330.133339470227">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31.4000013637539"
+              Start="0,0"
+              End="0,23.9000013637539">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.9000013637539" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="176,48"
+          Id="Package\Foreach Loop Container\Data Flow Task\Replaces Null Values"
+          TopLeft="407.333328751226,75.6666682163872" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\Data Flow Task.Paths[Flat File Source Output]"
+          TopLeft="416.833333333333,48.1666666666666">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="78.4999954178932,27.5000015497206"
+              Start="0,0"
+              End="78.4999954178932,20.0000015497206">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,7.17187562957399" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,7.17187562957399"
+                    Point2="0,11.171875629574"
+                    Point3="4,11.171875629574" />
+                  <mssgle:LineSegment
+                    End="74.4999954178932,11.171875629574" />
+                  <mssgle:CubicBezierSegment
+                    Point1="74.4999954178932,11.171875629574"
+                    Point2="78.4999954178932,11.171875629574"
+                    Point3="78.4999954178932,15.171875629574" />
+                  <mssgle:LineSegment
+                    End="78.4999954178932,20.0000015497206" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\Data Flow Task.Paths[Derived Column Output3]"
+          TopLeft="495.333328751226,123.666668216387">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,23.4666681543984"
+              Start="0,0"
+              End="0,15.9666681543984">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.9666681543984" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3014,6 +2858,16 @@ where [refTable].[IMSI] = ?</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Foreach Loop Container\Data Flow Task\Lookup-Subscriber_id">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
